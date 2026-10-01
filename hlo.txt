@@ -1,0 +1,22 @@
+4 types of request
+1.get
+2.post-id name class
+3.put-id name class
+4.patch
+5.delete
+
+{
+       "id":"1",
+       "name":"rahul", --------->post
+       "class":"cse"
+}
+{
+       "id":"1",
+       "name":"rahul", --------->put
+       "class":"ece"
+}
+
+{
+       
+       "class":"cse"------------->patch
+}
