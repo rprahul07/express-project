@@ -19,8 +19,14 @@ async function initDb() {
     CREATE TABLE IF NOT EXISTS students (
       id    integer PRIMARY KEY,
       name  text NOT NULL,
-      class text NOT NULL
+      class text NOT NULL,
+      dob   date
     )
+  `);
+  // Add dob column if it doesn't exist yet (safe to run on existing tables)
+  await pool.query(`
+    ALTER TABLE students
+    ADD COLUMN IF NOT EXISTS dob date
   `);
   await pool.query("ALTER TABLE students ENABLE ROW LEVEL SECURITY");
 }

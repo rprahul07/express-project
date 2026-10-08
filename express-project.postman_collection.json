@@ -55,7 +55,8 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"201 Created\", () => pm.response.to.have.status(201));",
-                  "pm.test(\"returns the student\", () => pm.expect(pm.response.json()).to.include({ name: \"rahul\", class: \"cse\" }));"
+                  "pm.test(\"returns the student\", () => pm.expect(pm.response.json()).to.include({ name: \"rahul\", class: \"cse\" }));",
+                  "pm.test(\"has dob field\", () => pm.expect(pm.response.json()).to.have.property(\"dob\"));"
                 ]
               }
             }
@@ -65,7 +66,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"{{studentId}}\",\n  \"name\": \"rahul\",\n  \"class\": \"cse\"\n}"
+              "raw": "{\n  \"id\": \"{{studentId}}\",\n  \"name\": \"rahul\",\n  \"class\": \"cse\",\n  \"dob\": \"2002-05-15\"\n}"
             },
             "url": "{{baseUrl}}/students"
           }
@@ -98,7 +99,8 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"returns the right id\", () => pm.expect(pm.response.json().id).to.eql(Number(pm.collectionVariables.get(\"studentId\"))));"
+                  "pm.test(\"returns the right id\", () => pm.expect(pm.response.json().id).to.eql(Number(pm.collectionVariables.get(\"studentId\"))));",
+                  "pm.test(\"has dob field\", () => pm.expect(pm.response.json()).to.have.property(\"dob\"));"
                 ]
               }
             }
@@ -117,7 +119,8 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"class is ece\", () => pm.expect(pm.response.json().class).to.eql(\"ece\"));"
+                  "pm.test(\"class is ece\", () => pm.expect(pm.response.json().class).to.eql(\"ece\"));",
+                  "pm.test(\"has dob field\", () => pm.expect(pm.response.json()).to.have.property(\"dob\"));"
                 ]
               }
             }
@@ -127,7 +130,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"{{studentId}}\",\n  \"name\": \"rahul\",\n  \"class\": \"ece\"\n}"
+              "raw": "{\n  \"id\": \"{{studentId}}\",\n  \"name\": \"rahul\",\n  \"class\": \"ece\",\n  \"dob\": \"2002-05-15\"\n}"
             },
             "url": "{{baseUrl}}/students/{{studentId}}"
           }
@@ -141,7 +144,8 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-                  "pm.test(\"class is cse\", () => pm.expect(pm.response.json().class).to.eql(\"cse\"));"
+                  "pm.test(\"class is cse\", () => pm.expect(pm.response.json().class).to.eql(\"cse\"));",
+                  "pm.test(\"has dob field\", () => pm.expect(pm.response.json()).to.have.property(\"dob\"));"
                 ]
               }
             }
@@ -151,7 +155,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"class\": \"cse\"\n}"
+              "raw": "{\n  \"class\": \"cse\",\n  \"dob\": \"2000-08-20\"\n}"
             },
             "url": "{{baseUrl}}/students/{{studentId}}"
           }
