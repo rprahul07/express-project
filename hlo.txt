@@ -1,7 +1,7 @@
 4 types of request
 1.get
 2.post-id name class
-3.put-id name class
+3.put-id name ckjsdjddljndqlass
 4.patch
 5.delete
 
